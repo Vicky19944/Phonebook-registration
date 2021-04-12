@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:registrationDetais
+    username: user
+    password: null
+    driver-class-name: org.h2.Driver
+    
+Server:
+  port: 9091   
