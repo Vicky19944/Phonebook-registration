@@ -27,7 +27,8 @@ public class UserLoginController {
 	}
 
 	@PostMapping("/SignIn/{email}/{password}")
-	public String handelSignInBttn(@PathVariable("email")String email, @PathVariable("password")String password, RedirectAttributes rd) {
+	public String handelSignInBttn(@PathVariable("email") String email, @PathVariable("password") String password,
+			RedirectAttributes rd) {
 		String cheackSignIn = serviceImpl.cheackSignIn(email, password);
 		if (cheackSignIn != null) {
 
@@ -47,17 +48,21 @@ public class UserLoginController {
 	}
 
 	@PostMapping("/forgotPassword")
-	public String handelForgotPaswordHyperLink() {
+	public String handelForgotPaswordHyperLink(Model model) {
+		User user = new User();
+
+		model.addAttribute("forgotPassword", user);
 
 		return "forgotPasswordForm";
 	}
 
+	@GetMapping("/load-RegForm")
 	public String handelSignUpLink(Model model) {
 		User user = new User();
 
 		model.addAttribute("SignUpUser", user);
 
-		return "SignUpUser";
+		return "RegistrationForm";
 	}
 
 }
